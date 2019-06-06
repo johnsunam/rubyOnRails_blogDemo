@@ -10,13 +10,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     respond_to do |format|
-      if @user.save
+      userSave = @user.save      
+      if userSave
         format.html { redirect_to articles_path, notice: 'Welcome to John blog.' }
         format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-
       end
     end
   end
